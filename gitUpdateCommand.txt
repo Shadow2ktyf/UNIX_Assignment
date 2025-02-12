@@ -1,1 +1,9 @@
+#Check Git status
+git status
 
+#Submit local update files
+git add .
+git commit -m "UPDATA STATUS"
+
+#Pull the latest changes from GitHub
+git pull origin main
