@@ -5,7 +5,7 @@
 ### Attributes of `fang_et_al_genotypes`
 
 ```
-`$ file fang_et_al_genotypes.txt`
+$ file fang_et_al_genotypes.txt
 
 
 ```
