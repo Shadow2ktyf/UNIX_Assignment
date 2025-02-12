@@ -6,15 +6,16 @@
 
 ```
 $ file fang_et_al_genotypes.txt
-
+$ wc fang_et_al_genotypes.txt
+$ awk -F "\t" '{print NF; exit}' fang_et_al_genotypes.txt
 
 ```
 
 By inspecting this file I learned that:
 
 1.  `fang_et_al_genotypes.txt` is ASCII text, with very long lines
-2. point 2
-3. point 3
+2. `fang_et_al_genotypes.txt` is a file with 2783 lines, 2744038 words and 11051939 bytes
+3. There are 986 columns in `fang_et_al_genotypes.txt`
 
 or
 
