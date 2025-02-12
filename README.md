@@ -5,12 +5,14 @@
 ### Attributes of `fang_et_al_genotypes`
 
 ```
-here is my snippet of code used for data inspection
+`$ file fang_et_al_genotypes.txt`
+
+
 ```
 
 By inspecting this file I learned that:
 
-1. point 1
+1.  `fang_et_al_genotypes.txt` is ASCII text, with very long lines
 2. point 2
 3. point 3
 
