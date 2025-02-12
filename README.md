@@ -1,8 +1,58 @@
-## Course Assignments
+#UNIX Assignment
 
-A description of files within this folder:
+##Data Inspection
 
-* `UNIX_Assignment.md` and `UNIX_Assignment.pdf`: Instructions for the assignment
-* `UNIX_Assignment_Template.md` and `UNIX_Assignment_Template.pdf`: An example of what your Markdown file should look like when you submit your assignment, including some Markdown syntax that should be helpful for you. The pdf shows how this file is rendered using a tool such as "MacDown"
-* The two files `fang_et_al_genotypes.txt` and `snp_positions.txt` are data files you will be reformatting for the assignment
-* The `transpose.awk` script will be needed to transpose the data (see instructions in `UNIX_Assignment.md`)
+###Attributes of `fang_et_al_genotypes`
+
+```
+here is my snippet of code used for data inspection
+```
+
+By inspecting this file I learned that:
+
+1. point 1
+2. point 2
+3. point 3
+
+or
+
+* point 1
+* point 2
+* point 3
+
+###Attributes of `snp_position.txt`
+
+```
+here is my snippet of code used for data inspection
+```
+
+By inspecting this file I learned that:
+
+1. point 1
+2. point 2
+3. point 3
+
+or
+
+* point 1
+* point 2
+* point 3
+
+##Data Processing
+
+###Maize Data
+
+```
+here is my snippet of code used for data processing
+```
+
+Here is my brief description of what this code does
+
+
+###Teosinte Data
+
+```
+here is my snippet of code used for data processing
+```
+
+Here is my brief description of what this code does
