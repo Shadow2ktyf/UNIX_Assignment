@@ -2,8 +2,10 @@
 git status
 
 #Submit local update files
-git add .
-git commit -m "UPDATA STATUS"
+1. git add .
+2. git commit -m "UPDATA STATUS"
+3. git push origin main
 
 #Pull the latest changes from GitHub
 git pull origin main
+git status
