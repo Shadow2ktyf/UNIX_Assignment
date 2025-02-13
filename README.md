@@ -5,42 +5,37 @@
 ### Attributes of `fang_et_al_genotypes`
 
 ```
+$ head fang_et_al genotypes.txt
 $ file fang_et_al_genotypes.txt
 $ wc fang_et_al_genotypes.txt
 $ awk -F "\t" '{print NF; exit}' fang_et_al_genotypes.txt
-$ cut -f1 fang_et_al_genotypes.txt | head -n 10
+$ cut -f1 fang_et_al_genotypes.txt | column -t |head
 ```
 
 By inspecting this file I learned that:
 
-1.  `fang_et_al_genotypes.txt` is ASCII text with very long lines
+1. `fang_et_al_genotypes.txt` is ASCII text with very long lines
 2. `fang_et_al_genotypes.txt` is a file with `2783` lines, `2744038` words, and `11051939` bytes
 3. There are `986` columns in `fang_et_al_genotypes.txt`
-4. Read the first column `Sample_ID` and confirm the delimiter type as `Tab`
+4. From reading the first column `Sample_ID` to confirm the delimiter type as `Tab`
 
-or
 
-* point 1
-* point 2
-* point 3
 
 ### Attributes of `snp_position.txt`
 
 ```
-here is my snippet of code used for data inspection
+$ head snp_position.txt
+$ file snp_position.txt
+$ awk -F "\t" '{print NF; exit}' snp_position.txt
+
 ```
 
 By inspecting this file I learned that:
 
-1. point 1
-2. point 2
-3. point 3
+1. `snp_position.txt` is a text file in ASCII format
+2. `snp_position.txt` is a file with `984` lines, `13198` words, and `82763` bytes
+3. There are `15` columns in `snp_position.txt`
 
-or
-
-* point 1
-* point 2
-* point 3
 
 ## Data Processing
 
