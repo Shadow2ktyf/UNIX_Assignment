@@ -26,6 +26,7 @@ By inspecting this file I learned that:
 ```
 $ head snp_position.txt
 $ file snp_position.txt
+$ wc snp_position.txt
 $ awk -F "\t" '{print NF; exit}' snp_position.txt
 
 ```
