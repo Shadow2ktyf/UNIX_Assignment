@@ -46,12 +46,20 @@ By inspecting this file I learned that:
 # pick out Group = ZMMIL, ZMMLR, and ZMMMR from `fang_et_al_genotypes.txt` to `maize_genotypes.txt` with first line (information line)
 (head -n 1 fang_et_al_genotypes.txt && grep -E 'ZMMIL|ZMMLR|ZMMMR' fang_et_al_genotypes.txt) > maize_genotypes.txt
 
+# transpose
+$ awk -f transpose.awk maize_genotypes.txt > transposed_maize_genotypes.txt
 
+# Sort by first column of transposed_maize_genotypes.txt
+$ sort -k1,1 transposed_maize_genotypes.txt > sorted_transposed_maize_genotypes.txt
+
+# Sort by first column of snp_position.txt
+$ sort -k1,1 snp_position.txt > sorted_snp_position.txt
 ```
 ### Maize Data code description
 Pick out Group = ZMMIL, ZMMLR, and ZMMMR from `fang_et_al_genotypes.txt` to `maize_genotypes.txt` with first line (information line)
-
-
+Transpose
+Sort by first column of transposed_maize_genotypes.txt
+Sort by first column of snp_position.txt
 ### Teosinte Data
 
 ```
