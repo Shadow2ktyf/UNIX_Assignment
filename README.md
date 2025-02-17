@@ -43,7 +43,10 @@ By inspecting this file I learned that:
 ### Maize Data
 
 ```
-here is my snippet of code used for data processing
+# pick out Group = ZMMIL, ZMMLR, and ZMMMR from `fang_et_al_genotypes.txt` to `maize_genotypes.txt` with first line (information line)
+(head -n 1 fang_et_al_genotypes.txt && grep -E 'ZMMIL|ZMMLR|ZMMMR' fang_et_al_genotypes.txt) > maize_genotypes.txt
+
+
 ```
 
 Here is my brief description of what this code does
