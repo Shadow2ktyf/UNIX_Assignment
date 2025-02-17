@@ -48,14 +48,15 @@ By inspecting this file I learned that:
 
 
 ```
-### Maize Data code desctription
-pick out Group = ZMMIL, ZMMLR, and ZMMMR from `fang_et_al_genotypes.txt` to `maize_genotypes.txt` with first line (information line)
+### Maize Data code description
+Pick out Group = ZMMIL, ZMMLR, and ZMMMR from `fang_et_al_genotypes.txt` to `maize_genotypes.txt` with first line (information line)
 
 
 ### Teosinte Data
 
 ```
-here is my snippet of code used for data processing
+# pick out Group = ZMPBA, ZMPIL, and ZMPJA from `fang_et_al_genotypes.txt` to `teosinte_genotypes.txt` with first line (information line)
+(head -n 1 fang_et_al_genotypes.txt && grep -E 'ZMPBA|ZMPIL|ZMPJA' fang_et_al_genotypes.txt) > teosinte_genotypes.txt
 ```
-
-Here is my brief description of what this code does
+### Teosinte Data code desctripion
+Pick out Group = ZMPBA, ZMPIL, and ZMPJA from `fang_et_al_genotypes.txt` to `teosinte_genotypes.txt` with first line (information line)
