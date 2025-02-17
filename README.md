@@ -56,10 +56,10 @@ $ sort -k1,1 transposed_maize_genotypes.txt > sorted_transposed_maize_genotypes.
 $ sort -k1,1 snp_position.txt > sorted_snp_position.txt
 ```
 ### Maize Data code description
-Pick out Group = ZMMIL, ZMMLR, and ZMMMR from `fang_et_al_genotypes.txt` to `maize_genotypes.txt` with first line (information line)
-Transpose
-Sort by first column of transposed_maize_genotypes.txt
-Sort by first column of snp_position.txt
+1. Pick out Group = ZMMIL, ZMMLR, and ZMMMR from `fang_et_al_genotypes.txt` to `maize_genotypes.txt` with first line (information line)
+2. Transpose
+3. Sort by first column of transposed_maize_genotypes.txt
+4. Sort by first column of snp_position.txt
 ### Teosinte Data
 
 ```
