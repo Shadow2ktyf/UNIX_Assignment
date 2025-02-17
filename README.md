@@ -60,3 +60,5 @@ Pick out Group = ZMMIL, ZMMLR, and ZMMMR from `fang_et_al_genotypes.txt` to `mai
 ```
 ### Teosinte Data code desctripion
 Pick out Group = ZMPBA, ZMPIL, and ZMPJA from `fang_et_al_genotypes.txt` to `teosinte_genotypes.txt` with first line (information line)
+
+
