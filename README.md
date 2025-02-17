@@ -49,7 +49,7 @@ By inspecting this file I learned that:
 
 ```
 
-Here is my brief description of what this code does
+# pick out Group = ZMMIL, ZMMLR, and ZMMMR from `fang_et_al_genotypes.txt` to `maize_genotypes.txt` with first line (information line)
 
 
 ### Teosinte Data
