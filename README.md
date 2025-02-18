@@ -46,7 +46,7 @@ By inspecting this file I learned that:
 # pick out Group = ZMMIL, ZMMLR, and ZMMMR from `fang_et_al_genotypes.txt` to `maize_genotypes.txt` with first line (information line)
 (head -n 1 fang_et_al_genotypes.txt && grep -E 'ZMMIL|ZMMLR|ZMMMR' fang_et_al_genotypes.txt) > maize_genotypes.txt
 
-# transpose
+# Transpose for maize groups
 $ awk -f transpose.awk maize_genotypes.txt > transposed_maize_genotypes.txt
 
 # Sort by first column of transposed_maize_genotypes.txt
@@ -55,17 +55,23 @@ $ sort -k1,1 transposed_maize_genotypes.txt > sorted_transposed_maize_genotypes.
 # Sort by first column of snp_position.txt
 $ sort -k1,1 snp_position.txt > sorted_snp_position.txt
 
-# Join two big file
+# Join sorted_transposed_maize_genotypes.txt AND sorted_snp_position.txt
 $ join -1 1 -2 1 -a 1 -a 2 -t $'\t' sorted_snp_position.txt sorted_transposed_maize_genotypes.txt> joint_transposed_maize_genotypes_snp_position.txt
 
 # 10 files (1 for each chromosome) with SNPs ordered based on increasing position values and with missing data encoded by this symbol: ?
-$ for i in {1..10}; do   awk -v val=$i '$3 == val || $0 ~ /Group/ || $0 ~ /Sample_ID/ || $0 ~ /SNP_ID/ || $0 ~ /JG_OTU/' joint_transposed_maize_genotypes_snp_position.txt | sort -k3,3r -k4,4n > maize_data/maize_chrom${i}_increase_sorting.txt; done
+$ for i in {1..10}; do
+> awk -v val=$i '$3 == val || $0 ~ /Group/ || $0 ~ /Sample_ID/ || $0 ~ /SNP_ID/ || $0 ~ /JG_OTU/' joint_transposed_maize_genotypes_snp_position.txt | sort -k3,3r -k4,4n > maize_data/maize_chrom${i}_increase_sorting.txt;
+> done
 
 # 10 files (1 for each chromosome) with SNPs ordered based on decreasing position values and with missing data encoded by this symbol: -
-$ for i in {1..10}; do   awk -v val=$i '$3 == val || $0 ~ /Group/ || $0 ~ /Sample_ID/ || $0 ~ /SNP_ID/ || $0 ~ /JG_OTU/' joint_transposed_maize_genotypes_snp_position.txt | sort -k3,3r -k4,4nr | sed 's|\?/?|-/-|g' > maize_data/maize_chrom${i}_decrease_sorting.txt; done
+$ for i in {1..10}; do
+> awk -v val=$i '$3 == val || $0 ~ /Group/ || $0 ~ /Sample_ID/ || $0 ~ /SNP_ID/ || $0 ~ /JG_OTU/' joint_transposed_maize_genotypes_snp_position.txt | sort -k3,3r -> k4,4nr | sed 's|\?/?|-/-|g' > maize_data/maize_chrom${i}_decrease_sorting.txt;
+> done
 
 # 1 file with all SNPs with multiple positions in the genome (these need not be ordered in any particular way)
-$ for i in {1..10}; do grep 'multiple' maize_chrom${i}_increase_sorting.txt >> maize_multiple.txt done
+$ for i in {1..10}; do
+> grep 'multiple' maize_chrom${i}_increase_sorting.txt >> maize_multiple.txt
+> done
 
 # 1 file with all SNPs with unknown positions in the genome (these need not be ordered in any particular way)
 $ awk '$4 == "unknown"' joint_transposed_maize_genotypes_snp_position.txt > maize_data/maize_unknown_position.txt
@@ -83,10 +89,45 @@ $ awk '$4 == "unknown"' joint_transposed_maize_genotypes_snp_position.txt > maiz
 ### Teosinte Data
 
 ```
-# pick out Group = ZMPBA, ZMPIL, and ZMPJA from `fang_et_al_genotypes.txt` to `teosinte_genotypes.txt` with first line (information line)
-(head -n 1 fang_et_al_genotypes.txt && grep -E 'ZMPBA|ZMPIL|ZMPJA' fang_et_al_genotypes.txt) > teosinte_genotypes.txt
+# Pick out Group = ZMPBA, ZMPIL, and ZMPJA from `fang_et_al_genotypes.txt` to `teosinte_genotypes.txt` with first line (information line)
+$ (head -n 1 fang_et_al_genotypes.txt && grep -E 'ZMPBA|ZMPIL|ZMPJA' fang_et_al_genotypes.txt) > teosinte_genotypes.txt
+
+# Transpose for teosinte groups
+$ awk -f transpose.awk teosinte_genotypes.txt > transposed_teosinte_genotypes.txt
+
+# Sort by first column of transposed_teosinte_genotypes.txt
+$ sort -k1,1 transposed_teosinte_genotypes.txt > sorted_transposed_teosinte_genotypes.txt
+
+# Join sorted_transposed_teosinte_genotypes.txt AND sorted_snp_position.txt
+$ join -1 1 -2 1 -a 1 -a 2 -t $'\t' sorted_snp_position.txt sorted_transposed_teosinte_genotypes.txt> joint_transposed_teosinte_genotypes_snp_position.txt
+
+# 10 files (1 for each chromosome) with SNPs ordered based on increasing position values and with missing data encoded by this symbol: ?
+$ for i in {1..10}; do
+> awk -v val=$i '$3 == val || $0 ~ /Group/ || $0 ~ /Sample_ID/ || $0 ~ /SNP_ID/ || $0 ~ /JG_OTU/' joint_transposed_teosinte_genotypes_snp_position.txt | sort
+-k3,3r -k4,4n > teosinte_data/teosinte_chrom${i}_increase_sorting.txt;
+> done
+
+# 10 files (1 for each chromosome) with SNPs ordered based on decreasing position values and with missing data encoded by this symbol: -
+$ for i in {1..10}; do
+> awk -v val=$i '$3 == val || $0 ~ /Group/ || $0 ~ /Sample_ID/ || $0 ~ /SNP_ID/ || $0 ~ /JG_OTU/' joint_transposed_teosinte_genotypes_snp_position.txt | sort -k3,3r -k4,4nr | sed 's|\?/?|-/-|g' > teosinte_data/teosinte_chrom${i}_decrease_sorting.txt;
+> done
+
+# 1 file with all SNPs with multiple positions in the genome (these need not be ordered in any particular way)
+$ for i in {1..10}; do
+> grep 'multiple' teosinte_chrom${i}_increase_sorting.txt >> teosinte_multiple_position.txt
+> done
+
+# 1 file with all SNPs with unknown positions in the genome (these need not be ordered in any particular way)
+$ awk '$4 == "unknown"' joint_transposed_teosinte_genotypes_snp_position.txt > teosinte_data/teosinte_unknown_position.txt
+
 ```
 ### Teosinte Data code desctripion
-Pick out Group = ZMPBA, ZMPIL, and ZMPJA from `fang_et_al_genotypes.txt` to `teosinte_genotypes.txt` with first line (information line)
-
+1. Pick out Group = ZMPBA, ZMPIL, and ZMPJA from `fang_et_al_genotypes.txt` to `teosinte_genotypes.txt` with first line (information line)
+2. Transpose for teosinte groups
+3. Sort by first column of transposed_teosinte_genotypes.txt
+4. Join sorted_transposed_teosinte_genotypes.txt AND sorted_snp_position.txt
+5. 10 files (1 for each chromosome) with SNPs ordered based on increasing position values and with missing data encoded by this symbol: ?
+6. 10 files (1 for each chromosome) with SNPs ordered based on decreasing position values and with missing data encoded by this symbol: -
+7. 1 file with all SNPs with multiple positions in the genome (these need not be ordered in any particular way)
+8. 1 file with all SNPs with unknown positions in the genome (these need not be ordered in any particular way)
 
