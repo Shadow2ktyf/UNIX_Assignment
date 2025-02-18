@@ -54,12 +54,32 @@ $ sort -k1,1 transposed_maize_genotypes.txt > sorted_transposed_maize_genotypes.
 
 # Sort by first column of snp_position.txt
 $ sort -k1,1 snp_position.txt > sorted_snp_position.txt
+
+# Join two big file
+$ join -1 1 -2 1 -a 1 -a 2 -t $'\t' sorted_snp_position.txt sorted_transposed_maize_genotypes.txt> joint_transposed_maize_genotypes_snp_position.txt
+
+# 10 files (1 for each chromosome) with SNPs ordered based on increasing position values and with missing data encoded by this symbol: ?
+$ for i in {1..10}; do   awk -v val=$i '$3 == val || $0 ~ /Group/ || $0 ~ /Sample_ID/ || $0 ~ /SNP_ID/ || $0 ~ /JG_OTU/' joint_transposed_maize_genotypes_snp_position.txt | sort -k3,3r -k4,4n > maize_data/maize_chrom${i}_increase_sorting.txt; done
+
+# 10 files (1 for each chromosome) with SNPs ordered based on decreasing position values and with missing data encoded by this symbol: -
+$ for i in {1..10}; do   awk -v val=$i '$3 == val || $0 ~ /Group/ || $0 ~ /Sample_ID/ || $0 ~ /SNP_ID/ || $0 ~ /JG_OTU/' joint_transposed_maize_genotypes_snp_position.txt | sort -k3,3r -k4,4nr | sed 's|\?/?|-/-|g' > maize_data/maize_chrom${i}_decrease_sorting.txt; done
+
+# 1 file with all SNPs with multiple positions in the genome (these need not be ordered in any particular way)
+$ for i in {1..10}; do grep 'multiple' maize_chrom${i}_increase_sorting.txt >> maize_multiple.txt done
+
+# 1 file with all SNPs with unknown positions in the genome (these need not be ordered in any particular way)
+$ awk '$4 == "unknown"' joint_transposed_maize_genotypes_snp_position.txt > maize_data/maize_unknown_position.txt
 ```
 ### Maize Data code description
-1. Pick out Group = ZMMIL, ZMMLR, and ZMMMR from `fang_et_al_genotypes.txt` to `maize_genotypes.txt` with first line (information line)
+1. Pick out Group = ZMMIL, ZMMLR, and ZMMMR from `fang_et_al_genotypes.txt` to `maize_genotypes.txt` with the first line (information line)
 2. Transpose
-3. Sort by first column of transposed_maize_genotypes.txt
-4. Sort by first column of snp_position.txt
+3. Sort by first column of `transposed_maize_genotypes.txt`
+4. Sort by first column of `snp_position.txt`
+5. Join two big file
+6. 10 files (1 for each chromosome) with SNPs ordered based on increasing position values and with missing data encoded by this symbol: ?
+7. 10 files (1 for each chromosome) with SNPs ordered based on decreasing position values and with missing data encoded by this symbol: -
+8. 1 file with all SNPs with multiple positions in the genome (these need not be ordered in any particular way)
+9. 1 file with all SNPs with unknown positions in the genome (these need not be ordered in any particular way)
 ### Teosinte Data
 
 ```
